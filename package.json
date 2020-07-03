@@ -1,0 +1,36 @@
+{
+  "name": "conversiontester",
+  "version": "1.0.0",
+  "description": "Gets a directory as an input and checks how long the conversion from format <someFormat> to mp4 format takes using ffmpeg",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alon2303/Conversiontester.git"
+  },
+  "keywords": [
+    "[node",
+    "conversion",
+    "media",
+    "video",
+    "mp4",
+    "wmv",
+    "avi",
+    "mov",
+    "mkv",
+    "ffmpeg]"
+  ],
+  "author": "Alon Ofir",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/Alon2303/Conversiontester/issues"
+  },
+  "homepage": "https://github.com/Alon2303/Conversiontester#readme",
+  "dependencies": {
+    "boxen": "^4.2.0",
+    "chalk": "^4.1.0",
+    "yargs": "^15.4.0"
+  }
+}
