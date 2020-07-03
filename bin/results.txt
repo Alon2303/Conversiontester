@@ -1,5 +1,0 @@
-File	|	Size	|	Conversion Time	|	
-.wmv	|	6.13	|	37605sec	|	
-.avi	|	2.27	|	54232sec	|	
-.mov	|	2.24	|	59340sec	|	
-.wmv	|	9.33	|	65450sec	|	

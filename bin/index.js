@@ -38,7 +38,7 @@ const headers = ['File', 'Size', 'Conversion Time', '\n'].join('\t|\t');
 console.log(logFileBox);
 fs.writeFile('results.txt', headers, (err)=> {
     if(err){
-        console.log(err)
+        console.log(chalk.red.bold("err: ", err));
     }
 });
 
@@ -46,8 +46,14 @@ console.log(chalk.yellow.bold('reading directory ' + directoryPath));
 fs.readdir(directoryPath, function (err, files) {
     //handling error
     if (err) {
-        return console.log('Unable to scan directory: ' + err);
+        return console.log(chalk.red.bold('Unable to scan directory: ' + err));
     }
+
+fs.mkdir('./temp',(err) => {
+    if(err){
+        console.log(chalk.red.bold("err: ", JSON.stringify(err)));
+    }
+});
     //running ffmpeg on all files using forEach
     files.forEach((file, index) => {
         const start = Date.now();
@@ -62,7 +68,7 @@ fs.readdir(directoryPath, function (err, files) {
         const child = child_process.exec(`ffmpeg -stats -i ${directoryPath}\\${file} -max_muxing_queue_size 9999 output${index}.mp4`, (err, stdout, stderr) => {
             console.log(chalk.yellow.bold("Processing file.. " + index));
             if (err) {
-                console.log(err);
+                console.log(chalk.red.bold("err: ",err));
                 return;
             }
             console.log(createBox);
@@ -76,7 +82,7 @@ fs.readdir(directoryPath, function (err, files) {
             console.log(logBox);
             fs.appendFile('results.txt', rowData, (err) =>{
                 if(err){
-                    console.log(err);
+                    console.log(chalk.red.bold("err: ", err));
                 }
             });
             console.log(doneBox);
