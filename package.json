@@ -2,7 +2,7 @@
   "name": "conversiontester",
   "version": "1.0.0",
   "description": "Gets a directory as an input and checks how long the conversion from format <someFormat> to mp4 format takes using ffmpeg",
-  "main": "index.js",
+  "main": "bin/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -24,6 +24,9 @@
   ],
   "author": "Alon Ofir",
   "license": "Apache-2.0",
+  "bin": {
+    "convert": "./bin/index.js"
+  },
   "bugs": {
     "url": "https://github.com/Alon2303/Conversiontester/issues"
   },
