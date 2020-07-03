@@ -7,7 +7,6 @@ const fs = require('fs');
 const path = require('path');
 const child_process = require('child_process');
 
-
 const options = yargs
     .usage("Usage: -d <dirPath>")
     .option("d", { alias: "dir", describe: "Directory path", type: "string", demandOption: true })
@@ -51,6 +50,7 @@ fs.readdir(directoryPath, function (err, files) {
     }
     //running ffmpeg on all files using forEach
     files.forEach((file, index) => {
+        const start = Date.now();
         // Create message per file
         const create = chalk.white.bold("Converting file.. ", index);
         const log = chalk.white.bold("Logging The results for file.. ", index);
@@ -59,17 +59,16 @@ fs.readdir(directoryPath, function (err, files) {
         const createBox = boxen( create, boxenOptions );
         const logBox = boxen( log, boxenOptions );
 
-        const child = child_process.exec(`ffmpeg.exe -stats -i ${directoryPath}\\${file} -max_muxing_queue_size 9999 output${index}.mp4`, (err, stdout, stderr) => {
+        const child = child_process.exec(`ffmpeg -stats -i ${directoryPath}\\${file} -max_muxing_queue_size 9999 output${index}.mp4`, (err, stdout, stderr) => {
             console.log(chalk.yellow.bold("Processing file.. " + index));
             if (err) {
                 console.log(err);
                 return;
             }
             console.log(createBox);
-            console.time('process');
         });
         child.on('close', () => {
-            const time = console.timeEnd('process');
+            const time = Date.now() - start;
             const stats = fs.statSync(`${directoryPath}\\${file}`);
             const fileSizeInBytes = stats.size;
             const truncatedNumber = Math.floor((fileSizeInBytes*0.000001)*100) /100;
