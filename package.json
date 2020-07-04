@@ -25,14 +25,13 @@
   "author": "Alon Ofir",
   "license": "Apache-2.0",
   "bin": {
-    "convert": "./bin/index.js"
+    "convert-tester": "./bin/index.js"
   },
   "bugs": {
     "url": "https://github.com/Alon2303/Conversiontester/issues"
   },
   "homepage": "https://github.com/Alon2303/Conversiontester#readme",
   "dependencies": {
-    "boxen": "^4.2.0",
     "chalk": "^4.1.0",
     "yargs": "^15.4.0"
   }
